@@ -1,0 +1,70 @@
+spring:
+  application:
+    name: zuul
+  jmx:
+    enabled: false
+
+server:
+  port: 8888
+
+eureka:
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:2761/eureka/
+zuul:
+  add-host-header: true
+  sensitiveHeaders: Cookie,Set-Cookie
+  info:
+    component: Zuul Server
+  spring:
+    profiles: eurekaAware
+  server:
+      port: ${server.port}
+  host:
+    socket-timeout-millis: 60000
+    connection-timeout-millis: 30000
+  eureka:
+      datacenter: ${dataCenter:SDC}
+      instance:
+        preferIpAddress: false
+        hostname: ${hostName:saswbbizzap54.sdc.vzwcorp.com}
+        statusPageUrlPath: ${management.context-path}/info
+        healthCheckUrlPath: ${management.context-path}/health
+        leaseExpirationDurationInSeconds: 30
+        metadataMap:
+          instanceId: ${spring.application.name}:${server.port}
+      instanceId: ${spring.application.name}:${server.port}
+      client:
+        registerWithEureka: false
+        fetchRegistry: true
+        serviceUrl:
+          defaultZone: http://localhost:2761/eureka/
+          
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000 
+  eureka:
+    enabled: true
+          
+security:
+  basic:
+    enabled: false
+  user:
+    name: admin
+    password: password
+management:
+  context-path: /manage
+  security:
+    enabled: true
+    roles: SUPERUSER
+  
+    
+zuul.sensitiveHeaders: Cookie,Set-Cookie
+hystrix:
+  command:
+    default:
+      execution:
+          isolation:
+             thread:
+                timeoutInMilliseconds: 60000
