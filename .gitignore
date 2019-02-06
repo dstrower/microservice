@@ -1,0 +1,5 @@
+target/
+*.bat
+*.sh
+*.class
+*.jar

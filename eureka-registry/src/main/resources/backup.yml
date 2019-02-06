@@ -1,0 +1,18 @@
+server:
+  port: 8761
+  context-path: /eureka
+logging:
+  path: /vzwhome/seelyro/logs
+eureka:
+  datacenter: SDC
+  environment: DEV1
+  serviceUrl: http://${eureka.instance.hostname}:${server.port}/eureka/
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    server:
+      waitTimeInMsWhenSyncEmpty: 0
+    serviceUrl:
+      default: http://${eureka.instance.hostname}:${server.port}/eureka/
