@@ -24,7 +24,7 @@ import stock.StockPrice;
 public class ButtonListener implements ActionListener {
 
 	DefaultTableModel defaultTableModel = null;
-	private static final String ZUUL_URL = "http://localhost:9000/";
+	private static final String ZUUL_URL = "http://localhost:10000/";
 
 	public ButtonListener(DefaultTableModel dtm) {
 		this.defaultTableModel = dtm;
@@ -76,6 +76,7 @@ public class ButtonListener implements ActionListener {
 
 			conn.disconnect();
 			Gson gson = new Gson(); // Or use new GsonBuilder().create();
+			//Gson gson = GsonBuilder().create();
 			if (api.equalsIgnoreCase("portfolio")) {
 				Portfolio portfolio = gson.fromJson(json, Portfolio.class);
 				System.out.println(json);

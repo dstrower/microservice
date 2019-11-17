@@ -29,8 +29,8 @@ public class GreetingController {
 		List<Stock> stockList = new ArrayList<Stock>();
 		Stock verizon = new Stock();
 		verizon.setNumberOfShares("112");
-		verizon.setStockName("Verizon");
-		verizon.setStockSymbol("VZ");
+		verizon.setStockName("Cerner");
+		verizon.setStockSymbol("CERN");
 		stockList.add(verizon);
 		Stock amazon = new Stock();
 		amazon.setNumberOfShares("100");
